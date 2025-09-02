@@ -1,0 +1,288 @@
+@import 'tailwindcss';
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-weight: normal;
+  src: url('/font/NotoSansJP-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Noto Sans JP';
+  font-weight: bold;
+  src: url('/font/NotoSansJP-Bold.woff2') format('woff2');
+}
+
+/* *******************************************************************
+  Variables
+******************************************************************* */
+@theme static {
+  /* Override Tailwindcss */
+  --spacing: 1rem;
+  --default-font-family: 'Noto Sans JP';
+
+  /* Custom Colors */
+  --color-body-900: var(--color-neutral-900);
+  --color-body-800: var(--color-neutral-800);
+  --color-body-700: var(--color-neutral-700);
+  --color-body-600: var(--color-neutral-600);
+  --color-body-500: var(--color-neutral-500);
+  --color-body-400: var(--color-neutral-400);
+  --color-body-300: var(--color-neutral-300);
+  --color-body-200: var(--color-neutral-200);
+  --color-body-100: var(--color-neutral-100);
+  --color-body-50: var(--color-neutral-50);
+
+  --color-primary-700: #034c8c;
+  --color-primary-600: color-mix(in srgb, #034c8c 90%, white);
+  --color-primary-300: color-mix(in srgb, #034c8c 30%, white);
+  --color-primary-200: color-mix(in srgb, #034c8c 20%, white);
+  --color-primary-100: color-mix(in srgb, #034c8c 10%, white);
+  --color-primary-50: color-mix(in srgb, #034c8c 5%, white);
+
+  --color-secondary-700: #04b2d9;
+  --color-secondary-600: color-mix(in srgb, #04b2d9 90%, white);
+  --color-secondary-300: color-mix(in srgb, #04b2d9 30%, white);
+  --color-secondary-200: color-mix(in srgb, #04b2d9 20%, white);
+  --color-secondary-100: color-mix(in srgb, #04b2d9 10%, white);
+  --color-secondary-50: color-mix(in srgb, #04b2d9 5%, white);
+
+  --color-success-700: var(--color-lime-700);
+  --color-success-600: var(--color-lime-600);
+  --color-success-300: var(--color-lime-300);
+  --color-success-200: var(--color-lime-200);
+  --color-success-100: var(--color-lime-100);
+  --color-success-50: var(--color-lime-50);
+
+  --color-info-700: var(--color-sky-700);
+  --color-info-600: var(--color-sky-600);
+  --color-info-300: var(--color-sky-300);
+  --color-info-200: var(--color-sky-200);
+  --color-info-100: var(--color-sky-100);
+  --color-info-50: var(--color-sky-50);
+
+  --color-warning-700: var(--color-amber-700);
+  --color-warning-600: var(--color-amber-600);
+  --color-warning-300: var(--color-amber-300);
+  --color-warning-200: var(--color-amber-200);
+  --color-warning-100: var(--color-amber-100);
+  --color-warning-50: var(--color-amber-50);
+
+  --color-error-700: var(--color-red-700);
+  --color-error-600: var(--color-red-600);
+  --color-error-300: var(--color-red-300);
+  --color-error-200: var(--color-red-200);
+  --color-error-100: var(--color-red-100);
+  --color-error-50: var(--color-red-50);
+
+  --color-white-700: white;
+  --color-white-600: rgba(255, 255, 255, 0.9);
+  --color-white-300: rgba(255, 255, 255, 0.4);
+  --color-white-200: rgba(255, 255, 255, 0.3);
+  --color-white-100: rgba(255, 255, 255, 0.2);
+  --color-white-50: rgba(255, 255, 255, 0.1);
+
+  --color-link: var(--color-primary-700);
+  --color-link-hover: var(--color-primary-600);
+
+  /* Custom Variables */
+  --icon-height: 24px;
+  --component-height-md: 48px;
+  --component-height-sm: 36px;
+  --component-height-lg: 56px;
+  --button-padding-x: 1rem;
+  --input-padding-x: 0.75rem;
+  --border-radius: var(--radius-lg);
+
+  --duration: 200ms;
+  --easing: cubic-bezier(0.76, 0, 0.24, 1);
+}
+
+/* *******************************************************************
+  Reboot
+******************************************************************* */
+body {
+  color: var(--color-body-700);
+}
+
+body.hide_scrollbar {
+  overflow: hidden !important;
+}
+
+::view-transition-group(*) {
+  animation-duration: var(--duration);
+}
+
+::-webkit-scrollbar {
+  @media (pointer: fine) {
+    width: 16px;
+  }
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100px;
+  border: 4px solid transparent;
+  background-clip: content-box;
+  background-color: var(--color-body-300);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-feature-settings: 'pkna';
+  box-decoration-break: clone;
+}
+
+button {
+  cursor: pointer;
+}
+
+a:active,
+a:hover,
+a:focus,
+button:active,
+button:hover,
+button:focus,
+input:active,
+input:hover,
+input:focus,
+select:active,
+select:hover,
+select:focus,
+optgroup:active,
+optgroup:hover,
+optgroup:focus,
+textarea:active,
+textarea:hover,
+textarea:focus {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+p:not([class]),
+figure:not([class]),
+ul:not([class]),
+ol:not([class]),
+dl:not([class]) {
+  margin-top: 0;
+  margin-bottom: var(--spacing);
+}
+
+ul:not([class]),
+ol:not([class]) {
+  padding-left: 1.25rem;
+}
+
+ul:not([class]) {
+  list-style-type: disc;
+}
+
+ol:not([class]) {
+  list-style-type: decimal;
+}
+
+code {
+  font-family: Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
+  padding: 0 2px;
+  margin: 0 2px;
+  border-radius: 2px;
+  font-size: 0.875rem;
+  color: white;
+  background-color: var(--color-body-700);
+}
+
+table {
+  border-spacing: 0;
+}
+
+.embed {
+  display: block;
+  width: 100%;
+  padding: 0;
+  overflow: hidden;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.embed > * {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+
+/* *******************************************************************
+  Table
+******************************************************************* */
+/* Base */
+.table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-body-200);
+}
+
+.table th,
+.table td {
+  padding: 1rem 1rem;
+  vertical-align: middle;
+  text-align: left;
+}
+
+.table th > *:last-child,
+.table td > *:last-child {
+  margin-bottom: 0;
+}
+
+.table th {
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.table thead tr {
+  border-bottom: 2px solid var(--color-body-200);
+}
+
+.table tbody tr {
+  border-top: 1px solid var(--color-body-200);
+}
+
+.table tbody tr:hover {
+  background-color: var(--color-body-50);
+}
+
+/* Bordered */
+.table-bordered {
+  border: 1px solid var(--color-body-200);
+}
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid var(--color-body-200);
+}
+
+.table-bordered th {
+  background-color: var(--color-body-50);
+}
+
+/* Responsive (legacy) */
+.table-responsive {
+  display: block;
+  width: 100%;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+
+.table-responsive.table-bordered {
+  border: 0;
+}
+
+.table-responsive .table {
+  min-width: 600px;
+  margin: 0;
+}
