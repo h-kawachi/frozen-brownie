@@ -29,7 +29,6 @@ export default function handleRequest(
       (userAgent && isbot(userAgent)) || routerContext.isSpaMode ? 'onAllReady' : 'onShellReady'
 
     const nonce = loadContext.get(nonceContext)
-    console.log('nonce:', nonce)
 
     const { pipe, abort } = renderToPipeableStream(
       <ServerRouter context={routerContext} url={request.url} nonce={nonce} />,
