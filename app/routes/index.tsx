@@ -37,9 +37,14 @@ export default function Index() {
               自作UIコンポーネントライブラリ (React)
             </a>
           </li>
-          <li>
+          <li className="mb-0.75">
             <a href="https://browniestrap-nuxt4.vercel.app/" target="_blank" className="text-primary-700">
               自作UIコンポーネントライブラリ (Vue)
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/h-kawachi/frozen-brownie" target="_blank" className="text-primary-700">
+              このページのgithub
             </a>
           </li>
         </ul>
