@@ -16,7 +16,7 @@ export default function Index() {
             インスタントウィン・アンケートキャンペーンシステム　ユーザ画面・バックオフィス（UIデザイン, フロントエンド）
           </li>
           <li className="mb-0.75">医療関連サービス　受発注・検体管理画面（フロントエンド）</li>
-          <li className="mb-0.75">採用・人事労災・福利厚生ツール（フロントエンド）</li>
+          <li className="mb-0.75">人事労務・福利厚生ツール（フロントエンド）</li>
           <li className="mb-0.75">出版社公式Webコミック配信サービス （UIデザイン, フロントエンド, バックエンド）</li>
           <li className="mb-0.75">出版社公式書籍紹介サイト （UIデザイン, フロントエンド, バックエンド）</li>
           <li className="mb-0.75">
