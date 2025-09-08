@@ -5,6 +5,9 @@ export default function Index() {
         <img src="/img/logo-frozenbrownie.svg" alt="Frozen Brownie" className="w-3/4 lg:w-1/2 h-auto mx-auto" />
       </h1>
 
+      <p className="mb-0">河内 裕之(Kawachi Hiroyuki)</p>
+      <small className="text-sm block mb-1">1984.10.16生</small>
+
       <section className="bg-body-50 p-1.5 rounded-xl mb-2">
         <h2 className="text-2xl font-normal mb-1.5">案件実績</h2>
 
