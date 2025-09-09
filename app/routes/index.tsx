@@ -5,7 +5,7 @@ export default function Index() {
         <img src="/img/logo-frozenbrownie.svg" alt="Frozen Brownie" className="w-3/4 lg:w-1/2 h-auto mx-auto" />
       </h1>
 
-      <p className="mb-0">河内 裕之(Kawachi Hiroyuki)</p>
+      <p className="mb-0">河内 裕之（Kawachi Hiroyuki）</p>
       <small className="text-sm block mb-1">1984.10.16生</small>
 
       <section className="bg-body-50 p-1.5 rounded-xl mb-2">
@@ -36,12 +36,12 @@ export default function Index() {
         <ul>
           <li className="mb-0.75">
             <a href="https://browniestrap-next.vercel.app/" target="_blank" className="text-primary-700">
-              自作UIコンポーネントライブラリ (React)
+              自作UIコンポーネントライブラリ (React / Next15)
             </a>
           </li>
           <li className="mb-0.75">
             <a href="https://browniestrap-nuxt4.vercel.app/" target="_blank" className="text-primary-700">
-              自作UIコンポーネントライブラリ (Vue)
+              自作UIコンポーネントライブラリ (Vue / Nuxt4)
             </a>
           </li>
           <li>
