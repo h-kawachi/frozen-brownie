@@ -1,6 +1,7 @@
 'use client'
 
 import { memo, useMemo } from 'react'
+import { type ColorType, textColor, bgColor, borderColor, hoverColor } from '~/lib/color-helper'
 import { Link } from 'react-router'
 import clsx from 'clsx'
 import Loader from '~/components/ui/Loader'
@@ -10,7 +11,7 @@ import './button.scss'
 type Props = {
   model: string
   type?: 'button' | 'submit'
-  color?: string
+  color?: ColorType
   href?: string
   target?: string
   title?: string
@@ -20,7 +21,7 @@ type Props = {
   icon?: string
   className?: string
   children?: React.ReactNode
-  onClick?: (event?: React.MouseEvent) => void
+  onClick?: (event: React.MouseEvent) => void
 }
 
 const Button = ({
@@ -53,34 +54,20 @@ const Button = ({
     return '24'
   }, [model])
 
+  const colorModel = useMemo<string>(() => {
+    if (model?.includes('dark')) return 'dark'
+    if (model?.includes('light')) return 'light'
+    if (model?.includes('border')) return 'border'
+    if (model?.includes('sidebar')) return 'sidebar'
+    if (model?.includes('input')) return 'input'
+    return 'default'
+  }, [model])
+
   const loaderColor = useMemo<string>(() => {
     if (model?.includes('dark')) return color === 'white' ? 'primary' : 'white'
     if (model?.includes('light')) return color === 'white' ? 'primary' : color
     if (model?.includes('border')) return color || 'white'
     return 'white'
-  }, [model, color])
-
-  const textColor = useMemo<string>(() => {
-    if (model?.includes('dark')) return `var(--color-${color === 'white' ? 'body-700' : 'white'})`
-    if (model?.includes('light')) return `var(--color-${color}-700)`
-    if (model?.includes('border')) return `var(--color-${color}-700)`
-    return 'var(--color-white)'
-  }, [model, color])
-
-  const bgColor = useMemo<string>(() => {
-    if (model?.includes('light')) return `var(--color-${color}-50)`
-    if (model?.includes('border')) return `var(--color-${color}-50)`
-    return `var(--color-${color}-700)`
-  }, [model, color])
-
-  const borderColor = useMemo<string>(() => {
-    if (model?.includes('border')) return `var(--color-${color}-700)`
-    return 'transparent'
-  }, [model, color])
-
-  const hoverColor = useMemo<string>(() => {
-    if (model?.includes('light')) return `var(--color-${color}-100)`
-    return `var(--color-${color}-600)`
   }, [model, color])
 
   const submittingClass = useMemo<string | undefined>(() => {
@@ -91,10 +78,10 @@ const Button = ({
 
   const buttonStyle: { [key: string]: string } = {
     '--component-height': componentHeight,
-    '--text-color': textColor,
-    '--bg-color': bgColor,
-    '--border-color': borderColor,
-    '--hover-color': hoverColor,
+    '--text-color': textColor(colorModel, color),
+    '--bg-color': bgColor(colorModel, color),
+    '--border-color': borderColor(colorModel, color),
+    '--hover-color': hoverColor(colorModel, color),
   }
 
   const contents = (
@@ -119,8 +106,8 @@ const Button = ({
         className={clsx('btn', model, className, { disabled })}
         style={buttonStyle}
         title={title}
-        tabIndex={disabled ? -1 : undefined}
-        onClick={onClick}
+        tabIndex={disabled || loading ? -1 : undefined}
+        onClick={disabled ? undefined : onClick}
       >
         {contents}
       </Link>
@@ -135,7 +122,7 @@ const Button = ({
         aria-label={title}
         tabIndex={disabled || loading ? -1 : undefined}
         disabled={disabled}
-        onClick={onClick}
+        onClick={disabled ? undefined : onClick}
       >
         {contents}
       </button>

@@ -225,13 +225,13 @@
     @media (hover: hover) {
       &:focus-visible,
       &:hover {
-        color: var(--bg-color);
-        background-color: var(--color-body-50);
+        color: var(--text-color);
+        background-color: var(--bg-color);
       }
     }
 
     &.active {
-      color: var(--bg-color);
+      color: var(--text-color);
 
       &::before {
         content: '';
@@ -240,8 +240,23 @@
         bottom: 0;
         left: -1rem;
         width: 0.25rem;
-        background-color: var(--bg-color);
+        background-color: var(--text-color);
         view-transition-name: sidebar-marker;
+      }
+    }
+  }
+
+  &.input {
+    @media (hover: hover) {
+      &:focus-visible {
+        &::after {
+          top: 0;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          border-radius: var(--border-radius);
+          border-color: var(--color-body-700);
+        }
       }
     }
   }
